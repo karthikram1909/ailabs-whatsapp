@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import AircraftIcon from "@/components/AircraftIcon"; // Assuming this exists from Hero check
 import { Check, Loader2 } from "lucide-react";
 import symbolIcon from "@/assets/symbol.png";
-import { supabase } from "@/lib/supabase";
+
 import { toast } from "sonner";
 
 interface Question {
@@ -116,18 +116,9 @@ const Selector = () => {
 
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.from('audit_submissions').insert([
-        {
-          breaks: answers.breaks,
-          manual: answers.manual,
-          tried: answers.tried,
-          outcome: answers.outcome,
-          help: answers.help,
-          ...userDetails
-        }
-      ]);
+      // Supabase integration removed.
+      // Proceeding directly to WhatsApp notification.
 
-      if (error) throw error;
 
       try {
         const message = `New Audit Request:\nName: ${userDetails.name}\nCompany: ${userDetails.company_name}\nMobile: ${userDetails.mobile_number}`;
